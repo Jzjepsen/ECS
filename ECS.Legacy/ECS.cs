@@ -7,12 +7,14 @@ namespace ECS.Legacy
         public int _threshold;
         private readonly ITempSensor _tempSensor;
         private readonly IHeater _heater;
+        private readonly IWindow _window;
 
-        public ECS(int thr, ITempSensor tempSensor, IHeater heater)
+        public ECS(int thr, ITempSensor tempSensor, IHeater heater, IWindow window)
         {
             SetThreshold(thr);
             _tempSensor = tempSensor;
             _heater = heater;
+            _window = window;
         }
 
         public void Regulate()
@@ -20,9 +22,15 @@ namespace ECS.Legacy
             var t = _tempSensor.GetTemp();
             Console.WriteLine($"Temperature measured was {t}");
             if (t < _threshold)
+            {
                 _heater.TurnOn();
+                _window.CloseWindow();
+            }
             else
+            {
                 _heater.TurnOff();
+                _window.OpenWindow();
+            }
         }
 
         public void SetThreshold(int thr)
