@@ -2,7 +2,7 @@ namespace ECS.Legacy;
 
 public class FakeHeater : IHeater
 {
-    public bool _heating;
+    public bool _heating = false;
     public void TurnOn()
     {
         _heating = true;
