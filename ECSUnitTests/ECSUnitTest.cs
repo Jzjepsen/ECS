@@ -56,20 +56,22 @@ public class ECSUnitTest
         Assert.That(_fakeHeater._heating, Is.EqualTo(result));
     }
 
+    // value based test
     [TestCase(20, 20)]
     [TestCase(21, 21)]
     [TestCase(22, 22)]
-    public void TestSetThreshold(int thres, int result)
+    public void TestSetThreshold(int threshold, int result)
     {
         //arrange
         _uutEcs._threshold = 0;
         //act
-        _uutEcs.SetThreshold(thres);
+        _uutEcs.SetThreshold(threshold);
         //assert
         Assert.That(_uutEcs._threshold, Is.EqualTo(result));
 
     }
 
+    // value based test
     [TestCase(20, 20)]
     [TestCase(21, 21)]
     [TestCase(22, 22)]
@@ -83,12 +85,18 @@ public class ECSUnitTest
         Assert.That(_uutEcs.GetThreshold(), Is.EqualTo(result));
     }
 
-    [Test]
-    public void TestGetCurTemp()
+    // Value based test
+    [TestCase(25,25)]
+    [TestCase(-5,-5)]
+    public void TestGetCurTemp(int temp, int result)
     {
-        Assert.That(_fakeTempSensor.GetTemp(), Is.EqualTo(42));
+        //arrange
+        _fakeTempSensor._temperature = temp;
+
+        Assert.That(_fakeTempSensor.GetTemp(), Is.EqualTo(result));
     }
 
+    // interaction based test
     [TestCase(25, true)]
     [TestCase(-2, false)]
     [TestCase(5, false)]
@@ -96,7 +104,6 @@ public class ECSUnitTest
     {
         //arrange
         _fakeTempSensor._temperature = temp;
-
         _fakeWindow._windowOpen =! result;
         //act
         _uutEcs.Regulate();
@@ -104,6 +111,7 @@ public class ECSUnitTest
         Assert.That(_fakeWindow._windowOpen, Is.EqualTo(result));
     }
 
+    // interaction based test
     [TestCase(25, false)]
     [TestCase(-2, true)]
     [TestCase(5, true)]
