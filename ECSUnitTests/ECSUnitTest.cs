@@ -25,7 +25,7 @@ public class ECSUnitTest
         
     }
     
-    // interaction based test
+    // interaction based test -> mock
     [TestCase(10, true)]
     [TestCase(-5, true)]
     [TestCase(25, false)]
@@ -41,7 +41,7 @@ public class ECSUnitTest
 
     }
 
-    // interaction based test
+    // interaction based test -> mock
     [TestCase(10, false)]
     [TestCase(-5, false)]
     [TestCase(25, true)]
@@ -56,7 +56,7 @@ public class ECSUnitTest
         Assert.That(_fakeHeater._heating, Is.EqualTo(result));
     }
 
-    // value based test
+    // value based test 
     [TestCase(20, 20)]
     [TestCase(21, 21)]
     [TestCase(22, 22)]
@@ -96,7 +96,7 @@ public class ECSUnitTest
         Assert.That(_fakeTempSensor.GetTemp(), Is.EqualTo(result));
     }
 
-    // interaction based test
+    // interaction based test -> mock
     [TestCase(25, true)]
     [TestCase(-2, false)]
     [TestCase(5, false)]
@@ -111,7 +111,7 @@ public class ECSUnitTest
         Assert.That(_fakeWindow._windowOpen, Is.EqualTo(result));
     }
 
-    // interaction based test
+    // interaction based test -> mock
     [TestCase(25, false)]
     [TestCase(-2, true)]
     [TestCase(5, true)]
