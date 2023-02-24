@@ -2,14 +2,19 @@
 {
     public class Heater : IHeater
     {
-        public void TurnOn()
+        public bool _heating = false;
+        public bool TurnOn()
         {
             System.Console.WriteLine("Heater is on");
+            return true;
+
         }
 
-        public void TurnOff()
+        public bool TurnOff()
         {
             System.Console.WriteLine("Heater is off");
+           return false;
+
         }
 
         public bool RunSelfTest()

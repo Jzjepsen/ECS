@@ -29,7 +29,7 @@ namespace ECS.Legacy
             else
             {
                 _heater.TurnOff();
-                _window.OpenWindow();
+                _window.OpenWindow(true);
             }
         }
 

@@ -2,15 +2,16 @@ namespace ECS.Legacy;
 
 public class Window : IWindow
 {
-    public void OpenWindow()
+    public bool OpenWindow(bool open)
     {
         System.Console.WriteLine("Opening Window");
-
+        return true;
     }
 
-    public void CloseWindow()
+    public bool CloseWindow()
     {
         System.Console.Write("Closing Window");
+        return false;
     }
 
     public bool RunSelfTest()
